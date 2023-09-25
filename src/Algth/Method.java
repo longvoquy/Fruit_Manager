@@ -1,5 +1,6 @@
-package control;
+package Algth;
 
+import control.Validation;
 import data.Fruit;
 import data.Order;
 
@@ -10,7 +11,7 @@ public class Method {
 
 
     //allow user create fruit
-    static void createFruit(ArrayList<Fruit> lf) {
+    public static void createFruit(ArrayList<Fruit> lf) {
         //loop until user don't want to create fruit
         while (true) {
             System.out.print("Enter fruit id: ");
@@ -40,7 +41,7 @@ public class Method {
     }
 
     //allow user show view order
-    static void viewOrder(Hashtable<String, ArrayList<Order>> ht) {
+   public static void viewOrder(Hashtable<String, ArrayList<Order>> ht) {
         for (String name : ht.keySet()) {
             System.out.println("Customer: " + name);
             ArrayList<Order> lo = ht.get(name);
@@ -49,7 +50,7 @@ public class Method {
     }
 
     //allow user buy items
-    static void shopping(ArrayList<Fruit> lf, Hashtable<String, ArrayList<Order>> ht) {
+    public static void shopping(ArrayList<Fruit> lf, Hashtable<String, ArrayList<Order>> ht) {
         //check list empty user can't buy
         if (lf.isEmpty()) {
             System.err.println("No have item.");
@@ -72,27 +73,20 @@ public class Method {
                 lo.add(new Order(fruit.getFruitId(), fruit.getFruitName(),
                         quantity, fruit.getPrice()));
             }
-            System.out.println("Do you want to oder it now");
+            System.out.println("Do you want to continue (Y/N):");
             if (!Validation.checkInputYN()) {
-                if (true) {
-                    displayListOrder(lo);
-                    System.out.print("Enter name: ");
-                    String name = Validation.checkInputString();
-                    ht.put(name, lo);
-                    System.err.println("Add successfull");
-                }
                 break;
             }
         }
-//        displayListOrder(lo);
-//        System.out.print("Enter name: ");
-//        String name = Validation.checkInputString();
-//        ht.put(name, lo);
-//        System.err.println("Add successfull");
+        displayListOrder(lo);
+        System.out.print("Enter name: ");
+        String name = Validation.checkInputString();
+        ht.put(name, lo);
+        System.err.println("Add successfull");
     }
 
     //display list fruit in shop
-    static void displayListFruit(ArrayList<Fruit> lf) {
+    public static void displayListFruit(ArrayList<Fruit> lf) {
         int countItem = 1;
         System.out.printf("%-10s%-20s%-20s%-15s\n", "Item", "Fruit name", "Origin", "Price");
         for (Fruit fruit : lf) {
@@ -105,7 +99,7 @@ public class Method {
     }
 
     //get fruint user want to by
-    static Fruit getFruitByItem(ArrayList<Fruit> lf, int item) {
+    public static Fruit getFruitByItem(ArrayList<Fruit> lf, int item) {
         int countItem = 1;
         for (Fruit fruit : lf) {
             //check shop have item or not
@@ -120,7 +114,7 @@ public class Method {
     }
 
     //display list order
-    static void displayListOrder(ArrayList<Order> lo) {
+   public static void displayListOrder(ArrayList<Order> lo) {
         double total = 0;
         System.out.printf("%15s%15s%15s%15s\n", "Product", "Quantity", "Price", "Amount");
         for (Order order : lo) {
@@ -129,11 +123,11 @@ public class Method {
                     order.getPrice() * order.getQuantity());
             total += order.getPrice() * order.getQuantity();
         }
-        System.out.println("Total: " + total);
+        System.out.println("Total: " + total + "$");
     }
 
     //if order exist then update order
-    static void updateOrder(ArrayList<Order> lo, String id, int quantity) {
+    public static void updateOrder(ArrayList<Order> lo, String id, int quantity) {
         for (Order order : lo) {
             if (order.getFruitId().equalsIgnoreCase(id)) {
                 order.setQuantity(order.getQuantity() + quantity);

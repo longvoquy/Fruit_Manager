@@ -1,5 +1,6 @@
 package control;
 
+import Algth.Method;
 import data.Fruit;
 import data.Order;
 import view.Menu;
@@ -35,7 +36,7 @@ public class Control extends Menu<String> {
 
 
     private void createFruit() {
-        Method.createFruit(lf);
+        Method. createFruit(lf);
     }
 
     private void viewOrders() {
