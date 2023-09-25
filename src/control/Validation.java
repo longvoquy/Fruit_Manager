@@ -7,10 +7,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Validation {
-    public static final Scanner in = new Scanner(System.in);
+//    public final Scanner in = new Scanner(System.in);
+    private Scanner in;
+
+    public Validation(Scanner in) {
+        this.in = in;
+    }
 
     //check user input number limit
-    public static int checkInputIntLimit(int min, int max) {
+    public int checkInputIntLimit(int min, int max) {
         //loop until user input correct
         while (true) {
             try {
@@ -28,7 +33,7 @@ public class Validation {
     }
 
     //check user input string
-    public static String checkInputString() {
+    public  String checkInputString() {
         //loop until user input correct
         while (true) {
             String result = in.nextLine().trim();
@@ -42,7 +47,7 @@ public class Validation {
     }
 
     //check user input int
-    public static int checkInputInt() {
+    public  int checkInputInt() {
         //loop until user input correct
         while (true) {
             try {
@@ -56,7 +61,7 @@ public class Validation {
     }
 
     //check user input double
-    public static double checkInputDouble() {
+    public  double checkInputDouble() {
         //loop until user input correct
         while (true) {
             try {
@@ -71,7 +76,7 @@ public class Validation {
     }
 
     //check user input yes/ no
-    public static boolean checkInputYN() {
+    public  boolean checkInputYN() {
 //        System.out.print("Do you want to continue (Y/N)?");
         //loop until user input correct
         while (true) {

@@ -13,6 +13,7 @@ public class Control extends Menu<String> {
 
     Hashtable<String, ArrayList<Order>> ht = new Hashtable<>();
 
+
     //--------------------------------------------------------
     static String[] menu = {"Create Fruit", "View orders", "Shopping (for buyer)", "EXIT (0)"};
 
@@ -29,21 +30,25 @@ public class Control extends Menu<String> {
 //        lf.add(new Fruit("4","Cam", 20000, 5, "két"));
         switch (n) {
             case 1 -> createFruit();
-            case 2 -> viewOrders();
+            case 2 -> Ordersview();
             case 3 -> shopping();
         }
     }
 
+    private void Ordersview() {
+        Method methodInstance = new Method(ht); // Create an instance of Method
+        methodInstance.viewOrder();
+    }
+
 
     private void createFruit() {
-        Method. createFruit(lf);
+        Method methodInstance = new Method(lf);
+        methodInstance.createFruit();
     }
 
-    private void viewOrders() {
-        Method.viewOrder(ht);
-    }
 
     private void shopping() {
-        Method.shopping(lf, ht);
+        Method methodInstance = new Method(lf,ht);
+        methodInstance.shopping();
     }
 }
